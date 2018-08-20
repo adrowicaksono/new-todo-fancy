@@ -1,0 +1,69 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>todo-app</title>
+    <!-- load bulma css framework -->
+    <!-- development version, includes helpful console warnings -->
+    <html xmlns="http://www.w3.org/1999/xhtml"></html>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>MY TO DO FANCY</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link href=/static/css/app.css rel=stylesheet>
+  </head>
+  <body onload="cekToken()">
+    <div id="app">
+            
+            
+                <head-todo 
+                    v-bind:owner="owner"
+                    v-bind:todos="todos"
+                    v-on:logout="logout"
+                >
+                </head-todo>
+                <content-todo
+                    v-bind:todos="todos"
+                    v-on:show-form="showForm"
+                    v-on:meeting="makeMeeting"
+                >
+                </content-todo>
+                
+                <edit-todo 
+                    v-show="isEditing" 
+                    v-bind:todo="edited"
+                    v-on:hide-form="hideForm"
+                >
+                </edit-todo>
+                
+                <new-todo 
+                    v-on:new-todo="newTodo"
+                >
+                </new-todo>
+                <meeting 
+                    v-bind:todo="forMeeting"
+                    v-if="isMeeting"
+                    v-on:close-meeting="closeMeeting"
+                ></meeting>
+            <footer>
+                <div class="container">
+                    <p class="subtitle is-6 is-small">
+                        built  by 
+                        <strong><a target="_blank" href="https://github.com/adrowicaksono">adrowicaksono</a></strong>
+                    </p>
+                </div>
+            </footer>
+
+            
+    </div>
+    
+    <script src="lib/logout.js"></script>
+    <script src="lib/cekToken.js"></script>
+    <script src="vue/component/head.js"></script>
+    <script src="vue/component/content.js"></script>
+    <script src="vue/component/meeting.js"></script>
+    <script src="vue/component/todo-edit.js"></script>
+    <script src="vue/component/new-todo.js"></script>
+    <script src="vue/script/app.js"></script>
+  </body>
+</html>
